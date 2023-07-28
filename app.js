@@ -6,8 +6,17 @@ app.use(express.json());
 
 app.get('/', async(req, res) => {
     try {
-        const sites = MODEL.site.find();
+        const sites = await MODEL.site.find();
         res.json(sites);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.post('/', async(req, res) => {
+    try {
+        const site = await MODEL.site.create(req.body);
+        res.json(site);
     } catch (error) {
         res.status(500).send(error);
     }
