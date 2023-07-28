@@ -21,6 +21,15 @@ app.post('/', async(req, res) => {
         res.status(500).send(error);
     }
 })
+app.put('/', async(req, res) => {
+    try {
+        const body = req.body;
+        const site = await MODEL.site.findOneAndUpdate(body);
+        res.json(site);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 
 module.exports = app;
