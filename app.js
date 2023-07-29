@@ -23,8 +23,7 @@ app.post('/', async(req, res) => {
 })
 app.put('/', async(req, res) => {
     try {
-        const body = req.body;
-        const site = await MODEL.site.findOneAndUpdate(body);
+        const site = await MODEL.site.findOneAndUpdate(req.body);
         res.json(site);
     } catch (error) {
         res.status(500).send(error);
@@ -32,8 +31,7 @@ app.put('/', async(req, res) => {
 });
 app.delete('/', async(req, res) => {
     try {
-        const body = req.body;
-        const site = await MODEL.site.findOneAndDelete(body);
+        const site = await MODEL.site.findOneAndDelete(req.body);
         res.json(site);
     } catch (error) {
         res.status(500).send(error);

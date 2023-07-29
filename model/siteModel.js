@@ -6,5 +6,6 @@ const siteSchema = new mongoose.Schema({
     dateOfStartingServer: { type: Date, required: true },
     dateOfEndingContract: { type: Date, required: true }
 });
+siteSchema.path('dateOfEndingContract').index({ expires: 1 });
 
 module.exports = mongoose.model("sites", siteSchema);
